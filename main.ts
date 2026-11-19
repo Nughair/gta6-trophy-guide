@@ -1,3 +1,6 @@
+// Leonida Platinum Companion — this entry's hand-in program for make.fun's gta6-trophy-guide-01 bounty:
+// a fully offline GTA VI trophy guide and tracker (checklist, per-trophy guides, roadmap, missable flags,
+// counters and a spoiler shield) living in app/, handed in below exactly as the starter plumbing describes.
 // A working gta6-trophy-guide-01 entry (Node 22, standard library only): the guide is this directory's app/ folder,
 // plain static files a browser opens at app/index.html (ES modules, CSS, no build step), offline: it loads nothing
 // over the network, and its trophy list and guides are app/data/trophies.json. The program hands it in: it copies app/

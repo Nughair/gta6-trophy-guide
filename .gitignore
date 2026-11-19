@@ -1,1 +1,5 @@
+# Leonida Platinum Companion — local build output only.
+# main.ts writes its hand-in copy to out/ (or $MAKEFUN_OUTPUT_DIR); none of it is source.
 out/
+out1/
+out2/

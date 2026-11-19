@@ -3,23 +3,98 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Platinum Companion — GTA VI Trophy Guide</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="topbar">
+  <div class="brand">
+    <h1>Leonida Platinum Companion</h1>
+    <p class="sub">Grand Theft Auto VI &middot; PS5 trophy guide &amp; tracker &middot; fully offline</p>
+  </div>
+  <div class="scoreboard">
+    <div class="bigcount"><span id="earnedCount">0</span><small> / 55 earned</small></div>
+    <div class="pct" id="pctLabel">0% to platinum</div>
+    <div class="scorebar"><i id="scoreBarFill"></i></div>
+    <div class="chips" id="gradeChips"></div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="Search trophies, guides, places&hellip;" aria-label="Search trophies">
+  <select id="gradeFilter" aria-label="Filter by grade">
+    <option value="all">All grades</option>
+    <option value="platinum">Platinum</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="bronze">Bronze</option>
+  </select>
+  <select id="earnedFilter" aria-label="Filter by earned state">
+    <option value="all">Earned + not earned</option>
+    <option value="earned">Earned only</option>
+    <option value="open">Not earned only</option>
+  </select>
+  <label class="spoilerToggle"><input id="spoilerToggle" type="checkbox"> Spoiler shield</label>
 </div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<div class="kindbar" id="kindBar" role="tablist" aria-label="Filter by kind"></div>
+
+<nav class="tabs" id="tabs">
+  <button type="button" data-view="checklist" class="active">Checklist</button>
+  <button type="button" data-view="roadmap">Roadmap</button>
+  <button type="button" data-view="missables">Missables</button>
+  <button type="button" data-view="save">Save &amp; sources</button>
+</nav>
+
+<main>
+  <section id="view-checklist" class="view active">
+    <div class="split">
+      <div class="pane listpane">
+        <div class="panehead"><span id="listCount">55 trophies</span><span class="hint">Tick to mark earned &middot; click a row for its guide</span></div>
+        <ul id="rows" class="rows"></ul>
+      </div>
+      <aside class="pane detailpane" id="detailPane">
+        <p class="empty">Pick a trophy on the left and its full guide, step list, missable note and sources appear here.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view">
+    <div class="pane">
+      <h2>Roadmap to the platinum</h2>
+      <p class="note">Play the story first and enjoy it — most of Leonida opens up as you go. The seven flagged missables are pinned at the top of this roadmap with warning styling so you meet them before their moments pass; everything else can be mopped up in free roam afterwards.</p>
+      <div id="missablePin"></div>
+      <div id="roadmap"></div>
+    </div>
+  </section>
+
+  <section id="view-missables" class="view">
+    <div class="pane">
+      <h2>Missables — read before you play</h2>
+      <p class="note">These seven trophies are flagged because their official descriptions tie the chance to a particular story moment or partnership beat. Treat each one as a risk read from the description, not a confirmed hard lock: if the moment passes, mission replay is the recovery we recommend. Windows below are our reading of the descriptions — see each guide for the reasoning and its sources.</p>
+      <div id="missableList"></div>
+    </div>
+  </section>
+
+  <section id="view-save" class="view">
+    <div class="pane savepane">
+      <h2>Save &amp; sources</h2>
+      <p>Your progress lives only in this browser (localStorage): the earned set, every counter and the spoiler setting. Nothing is uploaded anywhere — the app makes no network requests at all.</p>
+      <div class="savebtns">
+        <button type="button" id="exportBtn">Export progress (JSON)</button>
+        <label class="importBtn">Import progress <input id="importFile" type="file" accept="application/json"></label>
+        <button type="button" id="resetBtn" class="danger">Reset all progress</button>
+      </div>
+      <p id="saveMsg" class="savemsg" aria-live="polite"></p>
+      <h3>Where the data comes from</h3>
+      <p>Trophy names, official descriptions and grades are the published PS5 list, cited per trophy in each guide&rsquo;s Sources list (Exophase&rsquo;s Grand Theft Auto VI (PS5) trophy list). Counted targets are cross-checked against PSNProfiles&rsquo; Grand Theft Auto VI trophy list. Every strategy note is our own advice, worked out from the official description — the game is not out yet, so none of it has been checked in play, and we say so on every trophy rather than dressing guesses up as facts.</p>
+      <h3>Spoiler shield</h3>
+      <p>With the shield on, story trophies show masked names and descriptions until you earn them, so the checklist itself cannot spoil the plot. Guides stay readable — open one only when you want it.</p>
+    </div>
+  </section>
+</main>
+
+<footer>Leonida Platinum Companion &middot; unofficial fan guide &middot; progress is stored locally in your browser only.</footer>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
